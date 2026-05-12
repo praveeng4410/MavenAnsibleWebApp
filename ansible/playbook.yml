@@ -11,6 +11,7 @@
       remote_src: no
 
   - name: Restart Tomcat
-    systemd:
-      name: tomcat
-      state: restarted
+    shell: |
+      /opt/tomcat/bin/shutdown.sh || true
+      sleep 5
+      /opt/tomcat/bin/startup.sh
